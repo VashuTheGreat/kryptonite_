@@ -1,5 +1,6 @@
 services:
   app:
+    # build: .
     image: kryptonite   
     env_file: .env
     restart: unless-stopped
