@@ -37,13 +37,46 @@ class DataTransformation:
 
 
             for _, row in data.iterrows():
+                raw_time = str(row['acq_time']).split(",")[-1].zfill(4)
+                formatted_time = f"{raw_time[:2]}:{raw_time[2:]}"
+
                 popup_html = f"""
-                Date: {row['acq_date']}, Time: {row['acq_time']}<br>
-                Lat: {row['latitude']}, Lon: {row['longitude']}<br>
-                <button onclick="copyCoords({row['latitude']}, {row['longitude']})">
-                Copy Coordinates
-                </button>
+                <div style="
+                    font-family: Arial;
+                    padding:10px;
+                    border-radius:10px;
+                    background: linear-gradient(135deg,#1f2937,#111827);
+                    color:white;
+                    width:200px;
+                ">
+                    <h4 style="margin:0 0 8px 0;color:#60a5fa;">🔥 Fire Alert</h4>
+
+                    <p style="margin:4px 0;">
+                        <b>Date:</b> {row['acq_date']}<br>
+                        <b>Time:</b> {formatted_time}
+                    </p>
+
+                    <p style="margin:4px 0;">
+                        <b>Lat:</b> {row['latitude']}<br>
+                        <b>Lon:</b> {row['longitude']}
+                    </p>
+
+                    <button onclick="copyCoords({row['latitude']}, {row['longitude']})"
+                        style="
+                            margin-top:6px;
+                            padding:6px 10px;
+                            border:none;
+                            border-radius:6px;
+                            background:#3b82f6;
+                            color:white;
+                            cursor:pointer;
+                            font-size:12px;
+                        ">
+                        📋 Copy Coordinates
+                    </button>
+                </div>
                 """
+
                 folium.CircleMarker(
                     location=[row["latitude"], row["longitude"]],
                     radius=4,

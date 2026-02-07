@@ -15,4 +15,4 @@ RUN uv pip install --system -r requirements.txt
 EXPOSE 8002
 
 # Use python to run the main script (dependencies are already installed in system)
-CMD ["uv run", "main.py"]
+CMD ["uv","run","main.py"]
