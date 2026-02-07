@@ -1,8 +1,6 @@
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: kryptonite   
     env_file: .env
     restart: unless-stopped
     ports:

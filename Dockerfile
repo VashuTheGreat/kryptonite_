@@ -1,5 +1,5 @@
 # Use the official Python image
-FROM python:3.11-slim-buster
+FROM python:3.13-slim
 
 # Install uv inside the image
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -15,4 +15,4 @@ RUN uv pip install --system -r requirements.txt
 EXPOSE 8002
 
 # Use python to run the main script (dependencies are already installed in system)
-CMD ["python", "main.py"]
+CMD ["uv run", "main.py"]

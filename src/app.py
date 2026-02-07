@@ -7,6 +7,7 @@ from src.routes.map_router import router as MapRouter
 from src.routes.fireYolo_router import router as FireYoloRouter
 from src.routes.getHighRegionArea_router import router as GetHighRegionAreaRouter
 from src.routes.streamer_router import router as StreamFireImage
+from src.routes.data_analyser import router as DataAnalyserRouter
 app=FastAPI(title="Fire Detector",description="Kryptonite hackathon")
 
 
@@ -23,3 +24,4 @@ app.include_router(MapRouter,prefix="/api/map")
 app.include_router(FireYoloRouter,prefix="/api/fireYolo")
 app.include_router(GetHighRegionAreaRouter,prefix="/api/get_high_region_area")
 app.include_router(StreamFireImage,prefix="/api/streamFireImage")
+app.include_router(DataAnalyserRouter,prefix="/api/data_analyser")
